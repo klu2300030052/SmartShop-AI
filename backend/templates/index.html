@@ -1,110 +1,110 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>SmartShop AI</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
-<footer>
 
-<p>
-
-SmartShop AI © 2026
-
-Built for AI Build Hackathon
-
-</p>
-
-</footer>
 <body>
 
-<header>
+<div class="container">
+
     <h1>🛒 SmartShop AI</h1>
-    <p>AI Powered Product Recommendation System</p>
-</header>
 
-<div class="search-box">
-    <input id="searchBox" type="text" placeholder="Search Products">
-    <button onclick="searchProduct()">Search</button>
-</div>
-<h2>⭐ Recommended For You</h2>
+    <p style="text-align:center;font-size:20px;">
+        AI Powered Product Recommendation System
+    </p>
 
-<div class="products">
+    <div style="text-align:center;margin:30px;">
 
-<div class="card">
-<h3>Apple Watch</h3>
-<p>Because you searched Electronics</p>
-</div>
+        <input id="searchBox" type="text" placeholder="Search Products">
 
-<div class="card">
-<h3>Nike Running Shoes</h3>
-<p>Popular among similar users</p>
-</div>
+        <button onclick="searchProduct()">Search</button>
 
-<div class="card">
-<h3>Laptop Backpack</h3>
-<p>Frequently bought together</p>
-</div>
+    </div>
 
-</div>
-<h2>👕 Complete the Look</h2>
+    <h2>⭐ Recommended For You</h2>
 
-<div class="products">
+    <div class="card">
+        <h3>Apple Watch</h3>
+        <p>Electronics</p>
+        <p>₹29,999</p>
+    </div>
 
-<div class="card">
-<h3>Formal Shirt</h3>
-<p>₹999</p>
-</div>
+    <div class="card">
+        <h3>Nike Running Shoes</h3>
+        <p>Footwear</p>
+        <p>₹3,999</p>
+    </div>
 
-<div class="card">
-<h3>Blue Jeans</h3>
-<p>₹1499</p>
-</div>
+    <div class="card">
+        <h3>Laptop Backpack</h3>
+        <p>Accessories</p>
+        <p>₹1,299</p>
+    </div>
 
-<div class="card">
-<h3>Leather Belt</h3>
-<p>₹799</p>
-</div>
+    <h2>👕 Complete the Look</h2>
 
-</div>
-<h2>🔥 Trending Products</h2>
+    <div class="card">
+        <h3>Formal Shirt</h3>
+        <p>₹999</p>
+    </div>
 
-<div class="products">
+    <div class="card">
+        <h3>Blue Jeans</h3>
+        <p>₹1499</p>
+    </div>
 
-<div class="card">
-<h3>Wireless Earbuds</h3>
-<p>Best Seller</p>
-</div>
+    <div class="card">
+        <h3>Leather Belt</h3>
+        <p>₹799</p>
+    </div>
 
-<div class="card">
-<h3>Samsung Smart Watch</h3>
-<p>Trending Today</p>
-</div>
+    <h2>🔥 Trending Products</h2>
 
-<div class="card">
-<h3>Sunglasses</h3>
-<p>Top Rated</p>
-</div>
+    <div class="card">
+        <h3>Wireless Earbuds</h3>
+        <p>Best Seller</p>
+    </div>
 
-</div>
-<h2>Products</h2>
+    <div class="card">
+        <h3>Samsung Smart Watch</h3>
+        <p>Trending Today</p>
+    </div>
 
-<div id="results" class="products">
+    <div class="card">
+        <h3>Sunglasses</h3>
+        <p>Top Rated</p>
+    </div>
 
-{% for product in products %}
+    <h2>Search Results</h2>
 
-<div class="card">
+    <div id="results">
 
-<h3>{{ product.name }}</h3>
+        {% for product in products %}
 
-<p>{{ product.category }}</p>
+        <div class="card">
 
-<p>₹ {{ product.price }}</p>
+            <h3>{{ product.name }}</h3>
 
-<button>View Product</button>
+            <p>{{ product.category }}</p>
 
-</div>
+            <p>₹ {{ product.price }}</p>
 
-{% endfor %}
+            <button>View Product</button>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+    <hr>
+
+    <p style="text-align:center;color:gray;">
+        © 2026 SmartShop AI | Built for AI Build Placement Hackathon
+    </p>
 
 </div>
 
@@ -140,4 +140,5 @@ document.getElementById("results").innerHTML=html;
 </script>
 
 </body>
+
 </html>
