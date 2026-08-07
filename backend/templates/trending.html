@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trending Products</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+<header class="navbar">
+
+<div class="logo">
+🛒 SmartShop AI
+</div>
+
+<nav>
+
+<a href="/">🏠 Home</a>
+<a href="/cart">🛒 Cart</a>
+<a href="/wishlist">❤️ Wishlist</a>
+
+</nav>
+
+</header>
+
+<div class="container">
+
+<h1 style="text-align:center;">🔥 Trending Products</h1>
+
+<div class="product-grid">
+
+{% for product in products[:8] %}
+
+<div class="card">
+
+<img src="{{ url_for('static', filename='product_images/' + product.image) }}">
+
+<h3>{{ product.name }}</h3>
+
+<p>{{ product.category }}</p>
+
+<h4>₹ {{ product.price }}</h4>
+
+<p class="rating">
+⭐ {{ product.rating }}
+</p>
+
+<a href="/product/{{ product.id }}">
+<button class="view-btn">
+View Product
+</button>
+</a>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+</div>
+
+</body>
+</html>

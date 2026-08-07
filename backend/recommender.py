@@ -9,21 +9,39 @@ CSV_PATH = os.path.join(BASE_DIR, "dataset", "products.csv")
 # Load products
 products = pd.read_csv(CSV_PATH)
 
-def search_product(query):
-    names = products["name"].tolist()
 
-    results = process.extract(query, names, limit=5)
+def search_product(query):
+
+    # Return all products if search box is empty
+    if query.strip() == "":
+        return products.to_dict(orient="records")
+
+    # Search by product name + category
+    search_list = (
+        products["name"] + " " + products["category"]
+    ).tolist()
+
+    results = process.extract(
+        query,
+        search_list,
+        limit=10,
+        score_cutoff=40
+    )
 
     recommendations = []
 
     for item in results:
-        product = products[products["name"] == item[0]].iloc[0]
+
+        row = products.iloc[item[2]]
 
         recommendations.append({
-            "id": int(product["id"]),
-            "name": product["name"],
-            "category": product["category"],
-            "price": int(product["price"])
+            "id": int(row["id"]),
+            "name": row["name"],
+            "category": row["category"],
+            "price": int(row["price"]),
+            "rating": float(row["rating"]),
+            "stock": int(row["stock"]),
+            "image": str(row["image"])
         })
 
     return recommendations

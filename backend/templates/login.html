@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - SmartShop AI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+<header class="navbar">
+
+    <div class="logo">
+        🛒 SmartShop AI
+    </div>
+
+</header>
+
+<div style="width:400px;margin:60px auto;background:white;padding:30px;border-radius:15px;box-shadow:0 5px 15px rgba(0,0,0,.2);">
+
+    <h2 style="text-align:center;">Login</h2>
+
+    <form method="POST">
+
+        <input
+            type="email"
+            name="email"
+            placeholder="Email"
+            required
+            style="width:100%;padding:12px;margin:15px 0;">
+
+        <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            required
+            style="width:100%;padding:12px;margin:15px 0;">
+
+        <button
+            type="submit"
+            class="view-btn"
+            style="width:100%;">
+            Login
+        </button>
+
+    </form>
+
+    <br>
+
+    <p style="text-align:center;">
+        New User?
+        <a href="/signup">Create Account</a>
+    </p>
+
+</div>
+
+</body>
+</html>

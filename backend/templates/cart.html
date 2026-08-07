@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Shopping Cart</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+<header class="navbar">
+
+<div class="logo">
+🛒 SmartShop AI
+</div>
+
+<nav>
+
+<a href="/">🏠 Home</a>
+
+<a href="/wishlist">❤️ Wishlist</a>
+
+</nav>
+
+</header>
+
+<div class="container">
+
+<h1>Your Shopping Cart</h1>
+
+{% if products %}
+
+{% for product in products %}
+
+<div class="card">
+
+<img src="{{ url_for('static', filename='product_images/' + product.image) }}" width="180">
+
+<h2>{{ product.name }}</h2>
+
+<p>{{ product.category }}</p>
+
+<h3>₹ {{ product.price }}</h3>
+
+<a href="/remove_from_cart/{{ product.id }}">
+<button class="wish-btn">
+🗑 Remove
+</button>
+</a>
+
+</div>
+
+{% endfor %}
+
+<hr>
+
+<h2>Total : ₹ {{ total }}</h2>
+
+{% else %}
+
+<h2>Your Cart is Empty</h2>
+
+{% endif %}
+
+</div>
+
+</body>
+
+</html>

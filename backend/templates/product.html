@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ product.name }}</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+<header class="navbar">
+
+    <div class="logo">
+        🛒 SmartShop AI
+    </div>
+
+    <nav>
+
+        <a href="/">🏠 Home</a>
+
+        <a href="/cart">🛒 Cart</a>
+
+        <a href="/wishlist">❤️ Wishlist</a>
+
+    </nav>
+
+</header>
+
+<div style="width:90%;margin:40px auto;display:flex;gap:50px;align-items:center;">
+
+    <img src="{{ url_for('static', filename='product_images/' + product.image) }}"
+         width="400"
+         style="border-radius:15px;box-shadow:0 5px 15px rgba(0,0,0,.2);">
+
+    <div>
+
+        <h1>{{ product.name }}</h1>
+
+        <h3>{{ product.category }}</h3>
+
+        <h2 style="color:#0f62fe;">₹ {{ product.price }}</h2>
+
+        <h3>⭐ {{ product.rating }}/5</h3>
+
+        <p style="color:green;font-size:18px;">
+            <b>Stock:</b> {{ product.stock }}
+        </p>
+
+        <p>
+            Premium quality product recommended using SmartShop AI.
+        </p>
+
+        <br><br>
+
+        <a href="/add_to_cart/{{ product.id }}">
+            <button class="view-btn">
+                🛒 Add to Cart
+            </button>
+        </a>
+
+        &nbsp;&nbsp;
+
+        <a href="/add_to_wishlist/{{ product.id }}">
+            <button class="wish-btn">
+                ❤️ Wishlist
+            </button>
+        </a>
+
+        <br><br>
+
+        <a href="/">
+            <button class="view-btn">
+                ⬅ Continue Shopping
+            </button>
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>
