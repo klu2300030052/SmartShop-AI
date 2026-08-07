@@ -6,126 +6,183 @@
 
 ---
 
-## Team Details
+# 👨‍💻 Team Details
 
-**Team ID:** 183
-**Team Lead:** 2300030052
-
-**Members:**
-
-- 2300090016
-- 2300090312
-
-
----
-
-# Project Overview
-
-SmartShop AI is an AI-powered product recommendation system that helps users discover products quickly through intelligent search and recommendation techniques.
-
-The system recommends similar products based on user search input and provides a simple, fast, and interactive shopping experience.
+| Role | Details |
+|------|---------|
+| **Team ID** | **T183** |
+| **Team Lead** | Attanti Sri Swetha (2300030052) |
+| **Member 1** | Godavarthi Chaturya (2300090016) |
+| **Member 2** | Harshwardhan Raj (2300090312) |
+| **Room** | R705B |
 
 ---
 
-# Features
+# 📖 Project Overview
 
-- AI Product Search
-- Product Recommendation
-- Fast Search using RapidFuzz
-- User-Friendly Interface
-- Flask Backend
-- CSV Product Dataset
-- Responsive Design
+SmartShop AI is an AI-powered product recommendation system developed for the AI Build Placement Hackathon 2026.
+
+The application allows users to search for products and instantly receive intelligent recommendations using fuzzy string matching (RapidFuzz). It provides a simple, fast, and interactive shopping experience through a Flask-based web application.
 
 ---
 
-# Technology Stack
+# ✨ Features
 
-### Frontend
+- 🔍 AI Product Search
+- 🤖 Product Recommendation
+- ⚡ Fast Search using RapidFuzz
+- 🎨 User-Friendly Interface
+- 🖥️ Flask Backend
+- 📂 CSV Product Dataset
+- 📱 Responsive Design
 
-- HTML
-- CSS
+---
+
+# 🛠️ Technology Stack
+
+## Frontend
+- HTML5
+- CSS3
 - JavaScript
 
-### Backend
-
+## Backend
 - Python
 - Flask
 
-### AI Libraries
-
+## AI / Libraries
 - Pandas
 - RapidFuzz
+- NumPy
 
 ---
 
-# Folder Structure
+# 🏗️ System Architecture
 
+```text
+                    +----------------------+
+                    |        User          |
+                    +----------+-----------+
+                               |
+                               v
+                    +----------------------+
+                    | Search Interface     |
+                    | (HTML/CSS/JS)        |
+                    +----------+-----------+
+                               |
+                               v
+                    +----------------------+
+                    | Flask Backend        |
+                    | (app.py)             |
+                    +----------+-----------+
+                               |
+                               v
+                    +----------------------+
+                    | Recommendation Engine|
+                    | (recommender.py)     |
+                    +----------+-----------+
+                               |
+                               v
+                    +----------------------+
+                    | Product Dataset      |
+                    | (products.csv)       |
+                    +----------+-----------+
+                               |
+                               v
+                    +----------------------+
+                    | Recommended Results  |
+                    +----------------------+
 ```
-AI-Build-Hackathon/
 
-├── backend/
+---
+
+# 🔄 System Workflow
+
+```text
+              Start
+                 │
+                 ▼
+        User Opens Website
+                 │
+                 ▼
+       Enter Product Name
+                 │
+                 ▼
+          Click Search
+                 │
+                 ▼
+      Flask Receives Request
+                 │
+                 ▼
+ RapidFuzz Searches Dataset
+                 │
+                 ▼
+ Matching Products Found
+                 │
+                 ▼
+ Display Search Results
+                 │
+                 ▼
+                End
+```
+
+---
+
+# 📁 Folder Structure
+
+```text
+AI-Build-Hackathon
+│
+├── backend
 │   ├── app.py
 │   ├── recommender.py
-│   ├── templates/
-│   └── static/
-
-├── dataset/
+│   ├── templates
+│   │   └── index.html
+│   └── static
+│       ├── css
+│       ├── js
+│       └── images
+│
+├── dataset
 │   └── products.csv
-
-├── frontend/
-
-├── models/
-
+│
+├── frontend
+│
+├── models
+│
 └── README.md
 ```
 
 ---
 
-# System Workflow
-
-```
-User
-
-↓
-
-Search Product
-
-↓
-
-Flask Backend
-
-↓
-
-Recommendation Engine
-
-↓
-
-Product Dataset
-
-↓
-
-Recommended Products
-
-↓
-
-Display Results
-```
-
----
-
-# Future Enhancements
+# 🚀 Future Enhancements
 
 - Sentence Transformers
 - FAISS Vector Search
-- Chatbot Assistant
+- AI Chatbot Assistant
 - Voice Search
 - Product Images
-- Login System
+- User Login System
 - Shopping Cart
+- Personalized Recommendations
 
 ---
 
-# Developed For
+# 👥 Team Members
 
-AI Build Placement Hackathon 2026
+| Roll No | Name | Department |
+|----------|------------------------|------------|
+| 2300030052 | Attanti Sri Swetha | HTE |
+| 2300090016 | Godavarthi Chaturya | CS&IT |
+| 2300090312 | Harshwardhan Raj | HTI |
+
+---
+
+# 🎯 Developed For
+
+**AI Build Placement Hackathon 2026**
+
+**KL University**
+
+---
+
+© 2026 SmartShop AI Team – T183
