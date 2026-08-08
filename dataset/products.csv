@@ -1,13 +1,21 @@
-id,name,category,price
-1,Nike Running Shoes,Shoes,2999
-2,Adidas Sneakers,Shoes,3499
-3,Puma Sports Shoes,Shoes,2799
-4,Apple Watch,Electronics,19999
-5,Samsung Smart Watch,Electronics,15999
-6,Laptop Backpack,Bags,1499
-7,Travel Backpack,Bags,1799
-8,Formal Shirt,Clothing,999
-9,Blue Jeans,Clothing,1499
-10,Leather Belt,Accessories,799
-11,Sunglasses,Accessories,1299
-12,Wireless Earbuds,Electronics,2999
+id,name,category,price,rating,stock,image
+1,Nike Running Shoes,Shoes,2999,4.8,25,nike_running_shoes.jpg
+2,Adidas Sneakers,Shoes,3499,4.6,18,adidas_sneakers.jpeg
+3,Puma Sports Shoes,Shoes,2799,4.3,12,puma_sports_shoes.jpeg
+4,Apple iPhone 15,Mobiles,79999,4.9,10,iphone15.jpeg
+5,Samsung Galaxy S25,Mobiles,69999,4.7,15,galaxy_s25.jpeg
+6,OnePlus 13,Mobiles,54999,4.5,20,oneplus13.jpeg
+7,Dell Inspiron Laptop,Laptops,59999,4.6,8,dell_laptop.jpeg
+8,HP Pavilion Laptop,Laptops,64999,4.4,9,hp_laptop.jpeg
+9,Lenovo ThinkPad,Laptops,72999,4.8,6,lenovo_laptop.jpeg
+10,Apple Watch Series 10,Watches,45999,4.9,10,apple_watch.jpeg
+11,Samsung Galaxy Watch,Watches,21999,4.5,18,galaxy_watch.jpeg
+12,Boat Airdopes,Headphones,1999,4.2,30,boat_airdopes.jpeg
+13,Sony WH-1000XM5,Headphones,24999,4.8,12,sony_headphones.jpeg
+14,JBL Bluetooth Speaker,Speakers,4999,4.4,16,jbl_speaker.jpeg
+15,Wildcraft Backpack,Bags,1999,4.3,22,wildcraft_backpack.jpeg
+16,American Tourister Bag,Bags,2999,4.6,15,american_tourister.jpeg
+17,Nike Hoodie,Clothing,2499,4.5,18,nike_hoodie.jpeg
+18,Levi's Jeans,Clothing,1999,4.7,20,levis_jeans.jpeg
+19,Roadster T-Shirt,Clothing,799,4.1,40,roadster_tshirt.jpeg
+20,Ray-Ban Sunglasses,Accessories,8999,4.9,7,rayban_sunglasses.jpeg

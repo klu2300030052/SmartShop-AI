@@ -1,8 +1,6 @@
 # 🛒 SmartShop AI
 
-## AI Build Placement Hackathon 2026
-
-### AI Powered Product Recommendation System
+## AI-Powered E-Commerce Product Recommendation System
 
 ---
 
@@ -20,36 +18,57 @@
 
 # 📖 Project Overview
 
-SmartShop AI is an AI-powered product recommendation system developed for the AI Build Placement Hackathon 2026.
+SmartShop AI is an AI-powered e-commerce product recommendation system developed for the AI Build Placement Hackathon 2026.
 
-The application allows users to search for products and instantly receive intelligent recommendations using fuzzy string matching (RapidFuzz). It provides a simple, fast, and interactive shopping experience through a Flask-based web application.
+The application enables users to create an account, log in, search products using AI-assisted fuzzy matching (RapidFuzz), browse categories, explore trending products, view product details, manage shopping carts and wishlists, and enjoy a responsive shopping experience built with Flask.
+
+---
+
+# 🎯 Problem Statement
+
+Build an AI-powered shopping platform that recommends products and provides an intelligent, user-friendly online shopping experience.
+
+---
+
+# 💡 Solution
+
+SmartShop AI uses RapidFuzz-based intelligent search to provide relevant product recommendations based on user queries. The application also offers product browsing, category navigation, shopping cart management, wishlist management, and an interactive web interface.
 
 ---
 
 # ✨ Features
 
+- 🔐 User Login & Signup
 - 🔍 AI Product Search
-- 🤖 Product Recommendation
+- 🤖 AI Product Recommendation
+- 🛍️ Product Details Page
+- ❤️ Wishlist (Add & Remove)
+- 🛒 Shopping Cart (Add & Remove)
+- 📂 Categories
+- 🔥 Trending Products
+- 🖼️ Product Images
 - ⚡ Fast Search using RapidFuzz
-- 🎨 User-Friendly Interface
+- 🎨 Responsive User Interface
+- 🚪 Logout
 - 🖥️ Flask Backend
-- 📂 CSV Product Dataset
-- 📱 Responsive Design
 
 ---
 
 # 🛠️ Technology Stack
 
 ## Frontend
+
 - HTML5
 - CSS3
 - JavaScript
 
 ## Backend
+
 - Python
 - Flask
 
 ## AI / Libraries
+
 - Pandas
 - RapidFuzz
 - NumPy
@@ -61,6 +80,16 @@ The application allows users to search for products and instantly receive intell
 ```text
                     +----------------------+
                     |        User          |
+                    +----------+-----------+
+                               |
+                               v
+                    +----------------------+
+                    | Login / Signup       |
+                    +----------+-----------+
+                               |
+                               v
+                    +----------------------+
+                    | Home Page            |
                     +----------+-----------+
                                |
                                v
@@ -89,7 +118,7 @@ The application allows users to search for products and instantly receive intell
                                |
                                v
                     +----------------------+
-                    | Recommended Results  |
+                    | Search Results       |
                     +----------------------+
 ```
 
@@ -98,31 +127,29 @@ The application allows users to search for products and instantly receive intell
 # 🔄 System Workflow
 
 ```text
-              Start
-                 │
-                 ▼
-        User Opens Website
-                 │
-                 ▼
-       Enter Product Name
-                 │
-                 ▼
-          Click Search
-                 │
-                 ▼
-      Flask Receives Request
-                 │
-                 ▼
- RapidFuzz Searches Dataset
-                 │
-                 ▼
- Matching Products Found
-                 │
-                 ▼
- Display Search Results
-                 │
-                 ▼
-                End
+                User
+                  │
+                  ▼
+          Login / Signup
+                  │
+                  ▼
+            Home Page
+                  │
+                  ▼
+          Search Products
+                  │
+                  ▼
+         View Product Details
+          │        │        │
+          │        │        │
+          ▼        ▼        ▼
+     Add to Cart Wishlist Categories
+                  │
+                  ▼
+          Trending Products
+                  │
+                  ▼
+               Logout
 ```
 
 ---
@@ -135,42 +162,82 @@ AI-Build-Hackathon
 ├── backend
 │   ├── app.py
 │   ├── recommender.py
+│   ├── requirements.txt
 │   ├── templates
-│   │   └── index.html
+│   │   ├── index.html
+│   │   ├── login.html
+│   │   ├── signup.html
+│   │   ├── product.html
+│   │   ├── cart.html
+│   │   ├── wishlist.html
+│   │   ├── categories.html
+│   │   └── trending.html
+│   │
 │   └── static
 │       ├── css
-│       ├── js
-│       └── images
+│       └── product_images
 │
 ├── dataset
 │   └── products.csv
-│
-├── frontend
-│
-├── models
 │
 └── README.md
 ```
 
 ---
 
+# ▶️ How to Run
+
+Install the required libraries:
+
+```bash
+pip install -r requirements.txt
+```
+
+Run the application:
+
+```bash
+python app.py
+```
+
+Open your browser:
+
+```text
+http://127.0.0.1:5000
+```
+
+---
+
+# 📷 Application Modules
+
+- Login
+- Signup
+- Home Page
+- Product Search
+- Product Details
+- Shopping Cart
+- Wishlist
+- Categories
+- Trending Products
+- Logout
+
+---
+
 # 🚀 Future Enhancements
 
-- Sentence Transformers
-- FAISS Vector Search
+- Personalized AI Recommendations
 - AI Chatbot Assistant
 - Voice Search
-- Product Images
-- User Login System
-- Shopping Cart
-- Personalized Recommendations
+- Payment Gateway Integration
+- Order Tracking
+- Purchase History
+- Cloud Deployment
 
 ---
 
 # 👥 Team Members
 
 | Roll No | Name | Department |
-|----------|------------------------|------------|
+|---------|------|------------|
 | 2300030052 | Attanti Sri Swetha | HTE |
 | 2300090016 | Godavarthi Chaturya | CS&IT |
 | 2300090312 | Harshwardhan Raj | HTI |
@@ -184,5 +251,7 @@ AI-Build-Hackathon
 **KL University**
 
 ---
+
+
 
 © 2026 SmartShop AI Team – T183
