@@ -1,257 +1,279 @@
 # 🛒 SmartShop AI
 
-## AI-Powered E-Commerce Product Recommendation System
+## AI-Powered E-Commerce Product Discovery & Recommendation System
+
+**AI Build Placement Hackathon 2026**  
+**Track 7 – Discovery Engine**  
+**Team T183**
 
 ---
 
-# 👨‍💻 Team Details
+## 👨‍💻 Team Details
 
 | Role | Details |
-|------|---------|
-| **Team ID** | **T183** |
-| **Team Lead** | Attanti Sri Swetha (2300030052) |
-| **Member 1** | Godavarthi Chaturya (2300090016) |
-| **Member 2** | Harshwardhan Raj (2300090312) |
+|---|---|
+| **Team ID** | T183 |
+| **Team Lead** | Attanti Sri Swetha – 2300030052 |
+| **Member 1** | Godavarthi Chaturya – 2300090016 |
+| **Member 2** | Harshwardhan Raj – 2300090312 |
 | **Room** | R705B |
 
 ---
 
-# 📖 Project Overview
+## 📌 Project Overview
 
-SmartShop AI is an AI-powered e-commerce product recommendation system developed for the AI Build Placement Hackathon 2026.
+SmartShop AI is an AI-powered e-commerce product discovery and recommendation system developed for the AI Build Placement Hackathon 2026.
 
-The application enables users to create an account, log in, search products using AI-assisted fuzzy matching (RapidFuzz), browse categories, explore trending products, view product details, manage shopping carts and wishlists, and enjoy a responsive shopping experience built with Flask.
+The system helps users discover relevant products using intelligent search and recommendation techniques.
+
+It combines:
+
+- 🤖 Semantic Search
+- ⚡ FAISS Vector Search
+- 🔤 RapidFuzz Matching
+- 🎯 Intent Detection
+- 🏷️ Category Detection
+- 💰 Price-Aware Ranking
+- ⭐ Rating-Based Ranking
+- 🛡️ Recommendation Diversity
 
 ---
 
-# 🎯 Problem Statement
+## 🎯 Problem Statement
 
-Build an AI-powered shopping platform that recommends products and provides an intelligent, user-friendly online shopping experience.
+Traditional product search mainly depends on keywords and may not fully understand what the shopper wants.
+
+For example:
+
+**User Query:**
+
+`cheap running shoes`
+
+The system should understand:
+
+- Intent → **Bargain / Sports**
+- Category → **Shoes**
+- Preference → **Affordable products**
+
+SmartShop AI uses these signals to provide more relevant product results.
 
 ---
 
-# 💡 Solution
+## 💡 Solution
 
-SmartShop AI uses RapidFuzz-based intelligent search to provide relevant product recommendations based on user queries. The application also offers product browsing, category navigation, shopping cart management, wishlist management, and an interactive web interface.
+SmartShop AI uses a hybrid search and recommendation pipeline:
 
+```text
+User Query
+    ↓
+Query Understanding
+    ↓
+Intent + Category Detection
+    ↓
+Semantic Search
+    +
+FAISS Vector Search
+    +
+RapidFuzz Matching
+    ↓
+Hybrid Ranking
+    ↓
+Price + Rating + Relevance
+    ↓
+Diversity Check
+    ↓
+Recommended Products
+```
 ---
 
-# ✨ Features
+## 🧠 AI Architecture
 
-- 🔐 User Login & Signup
-- 🔍 AI Product Search
-- 🤖 AI Product Recommendation
-- 🛍️ Product Details Page
-- ❤️ Wishlist (Add & Remove)
-- 🛒 Shopping Cart (Add & Remove)
+```mermaid
+flowchart TD
+    A[User Query] --> B[Query Understanding]
+
+    B --> C[Intent Detection]
+    B --> D[Category Detection]
+
+    A --> E[Semantic Search]
+    E --> F[FAISS Vector Search]
+
+    A --> G[RapidFuzz Matching]
+
+    C --> H[Hybrid Ranking]
+    D --> H
+    F --> H
+    G --> H
+
+    H --> I[Price & Rating Scoring]
+    I --> J[Diversity Guardrail]
+    J --> K[Final Product Recommendations]
+```
+
+### AI Flow
+
+```text
+User Query
+    ↓
+Intent + Category Detection
+    ↓
+Semantic Search
+    +
+FAISS Vector Search
+    +
+RapidFuzz Matching
+    ↓
+Hybrid Ranking
+    ↓
+Price + Rating
+    ↓
+Diversity Guardrail
+    ↓
+Final Recommendations
+```
+---
+
+## 🔄 User Workflow
+
+```mermaid
+flowchart LR
+    A[Login / Signup] --> B[Home Page]
+    B --> C[Search Products]
+    C --> D[AI Ranked Results]
+    D --> E[View Product]
+
+    E --> F[Add to Cart]
+    E --> G[Add to Wishlist]
+
+    B --> H[Categories]
+    B --> I[Trending Products]
+
+    F --> J[Manage Cart]
+    G --> K[Manage Wishlist]
+
+    J --> L[Logout]
+    K --> L
+    H --> L
+    I --> L
+```
+
+### Shopping Flow
+
+```text
+Login / Signup
+      ↓
+   Home Page
+      ↓
+ Search Product
+      ↓
+ AI Ranked Results
+      ↓
+  View Product
+    ↙      ↘
+ Cart     Wishlist
+    ↓        ↓
+ Manage   Manage
+    ↘      ↙
+     Logout
+```
+---
+
+## ✨ Features
+
+- 🔐 Login & Signup
+- 🔎 AI Product Search
+- 🤖 Product Recommendations
+- 🧠 Intent Detection
+- 🏷️ Category-Based Search
+- ⚡ FAISS Vector Search
+- 🔤 RapidFuzz Matching
+- 💰 Price-Aware Ranking
+- ⭐ Rating-Based Ranking
+- 🛡️ Recommendation Diversity
+- 👁️ Product Details
+- 🛒 Add / Remove Cart
+- ❤️ Add / Remove Wishlist
 - 📂 Categories
 - 🔥 Trending Products
-- 🖼️ Product Images
-- ⚡ Fast Search using RapidFuzz
-- 🎨 Responsive User Interface
 - 🚪 Logout
-- 🖥️ Flask Backend
 
 ---
 
-# 🛠️ Technology Stack
+## 🛠️ Technology Stack
 
-## Frontend
-
+### Frontend
 - HTML5
 - CSS3
 - JavaScript
+- Jinja2
 
-## Backend
-
+### Backend
 - Python
 - Flask
 
-## AI / Libraries
-
-- Pandas
+### AI / Search
+- Sentence Transformers
+- FAISS
 - RapidFuzz
+
+### Data Processing
+- Pandas
 - NumPy
 
+### Dataset
+- CSV Product Dataset
+
+---
 ---
 
-# 🏗️ System Architecture
+## 🎯 Track 7 – Discovery Engine Alignment
 
-```text
-                    +----------------------+
-                    |        User          |
-                    +----------+-----------+
-                               |
-                               v
-                    +----------------------+
-                    | Login / Signup       |
-                    +----------+-----------+
-                               |
-                               v
-                    +----------------------+
-                    | Home Page            |
-                    +----------+-----------+
-                               |
-                               v
-                    +----------------------+
-                    | Search Interface     |
-                    | (HTML/CSS/JS)        |
-                    +----------+-----------+
-                               |
-                               v
-                    +----------------------+
-                    | Flask Backend        |
-                    | (app.py)             |
-                    +----------+-----------+
-                               |
-                               v
-                    +----------------------+
-                    | Recommendation Engine|
-                    | (recommender.py)     |
-                    +----------+-----------+
-                               |
-                               v
-                    +----------------------+
-                    | Product Dataset      |
-                    | (products.csv)       |
-                    +----------+-----------+
-                               |
-                               v
-                    +----------------------+
-                    | Search Results       |
-                    +----------------------+
-```
+| Requirement | SmartShop AI |
+|---|---|
+| Intelligent Product Discovery | ✅ |
+| Semantic Search | ✅ |
+| Vector Search | ✅ FAISS |
+| Natural-Language Search | ✅ |
+| Intent Detection | ✅ |
+| Category-Aware Ranking | ✅ |
+| Price-Aware Ranking | ✅ |
+| Recommendation Diversity | ✅ |
+| Cold-Start Discovery | ✅ Basic |
+| Complete-the-Look | ✅ Basic |
 
 ---
 
-# 🔄 System Workflow
+## 🚀 Future Enhancements
 
-```text
-                User
-                  │
-                  ▼
-          Login / Signup
-                  │
-                  ▼
-            Home Page
-                  │
-                  ▼
-          Search Products
-                  │
-                  ▼
-         View Product Details
-          │        │        │
-          │        │        │
-          ▼        ▼        ▼
-     Add to Cart Wishlist Categories
-                  │
-                  ▼
-          Trending Products
-                  │
-                  ▼
-               Logout
-```
+- 👤 Personalized recommendations using user behavior
+- 📊 Real-time clickstream-based recommendations
+- 🧠 Two-Tower recommendation model
+- 🖼️ Multimodal image + text embeddings
+- 🤖 LLM-powered shopping assistant
+- 📚 RAG-based product search
+- 🛍️ Frequently Bought Together recommendations
+- ☁️ Cloud deployment
+- 🔐 Production-level security and DPDP compliance
 
 ---
 
-# 📁 Folder Structure
+## 🏆 Conclusion
 
-```text
-AI-Build-Hackathon
-│
-├── backend
-│   ├── app.py
-│   ├── recommender.py
-│   ├── requirements.txt
-│   ├── templates
-│   │   ├── index.html
-│   │   ├── login.html
-│   │   ├── signup.html
-│   │   ├── product.html
-│   │   ├── cart.html
-│   │   ├── wishlist.html
-│   │   ├── categories.html
-│   │   └── trending.html
-│   │
-│   └── static
-│       ├── css
-│       └── product_images
-│
-├── dataset
-│   └── products.csv
-│
-└── README.md
-```
+SmartShop AI combines **semantic search, FAISS vector search, RapidFuzz matching and intelligent ranking** to provide a smarter e-commerce product discovery experience.
+
+The system helps users find relevant products based on their search intent, category, price and rating.
 
 ---
 
-# ▶️ How to Run
+## 👥 Team T183
 
-Install the required libraries:
+**Attanti Sri Swetha**  
+**Godavarthi Chaturya**  
+**Harshwardhan Raj**
 
-```bash
-pip install -r requirements.txt
-```
-
-Run the application:
-
-```bash
-python app.py
-```
-
-Open your browser:
-
-```text
-http://127.0.0.1:5000
-```
-
----
-
-# 📷 Application Modules
-
-- Login
-- Signup
-- Home Page
-- Product Search
-- Product Details
-- Shopping Cart
-- Wishlist
-- Categories
-- Trending Products
-- Logout
-
----
-
-# 🚀 Future Enhancements
-
-- Personalized AI Recommendations
-- AI Chatbot Assistant
-- Voice Search
-- Payment Gateway Integration
-- Order Tracking
-- Purchase History
-- Cloud Deployment
-
----
-
-# 👥 Team Members
-
-| Roll No | Name | Department |
-|---------|------|------------|
-| 2300030052 | Attanti Sri Swetha | HTE |
-| 2300090016 | Godavarthi Chaturya | CS&IT |
-| 2300090312 | Harshwardhan Raj | HTI |
-
----
-
-# 🎯 Developed For
-
-**AI Build Placement Hackathon 2026**
-
+**AI Build Placement Hackathon 2026**  
 **KL University**
 
 ---
-
-
 
 © 2026 SmartShop AI Team – T183

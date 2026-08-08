@@ -2,170 +2,449 @@
 <html lang="en">
 
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta charset="UTF-8">
+<title>SmartShop AI</title>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}">
 
-    <title>SmartShop AI</title>
+<style>
 
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+.ai-search-section {
+    max-width: 1100px;
+    margin: 35px auto;
+    padding: 35px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.10);
+    text-align: center;
+}
 
+.ai-search-section h1 {
+    margin-bottom: 10px;
+}
+
+.ai-search-section p {
+    color: #666;
+}
+
+.ai-badge {
+    display: inline-block;
+    background: #eef4ff;
+    color: #0f62fe;
+    padding: 7px 14px;
+    border-radius: 20px;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.search-box {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 25px;
+}
+
+.search-box input {
+    width: 55%;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 16px;
+}
+
+.search-box button {
+    padding: 15px 25px;
+    border: none;
+    border-radius: 10px;
+    background: #0f62fe;
+    color: white;
+    cursor: pointer;
+}
+
+.intent-box {
+    margin-top: 18px;
+    color: #555;
+    font-size: 14px;
+}
+
+.results-title {
+    text-align: center;
+    margin: 35px 0 20px;
+}
+
+.products-grid {
+    max-width: 1100px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 25px;
+    padding: 20px;
+}
+
+.product-card {
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.10);
+    text-align: center;
+}
+
+.product-card img {
+    width: 100%;
+    height: 210px;
+    object-fit: contain;
+    background: #f5f5f5;
+}
+
+.product-info {
+    padding: 18px;
+}
+
+.product-info h3 {
+    margin: 8px 0;
+}
+
+.reason {
+    background: #f0f7ff;
+    color: #175cd3;
+    padding: 8px;
+    border-radius: 8px;
+    font-size: 12px;
+    margin: 10px 0;
+}
+
+.product-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 15px;
+}
+
+.product-buttons a {
+    text-decoration: none;
+}
+
+.view-btn,
+.wish-btn {
+    border: none;
+    padding: 10px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.view-btn {
+    background: #0f62fe;
+    color: white;
+}
+
+.wish-btn {
+    background: #ff477e;
+    color: white;
+}
+
+.empty-message {
+    text-align: center;
+    padding: 40px;
+    color: #777;
+}
+
+</style>
 </head>
 
 <body>
 
 <header class="navbar">
 
-    <div class="logo">
-        🛒 SmartShop AI
-    </div>
+<div class="logo">
+🛒 SmartShop AI
+</div>
 
-    <nav>
-        <a href="/">🏠 Home</a>
-        <a href="/categories">📂 Categories</a>
-        <a href="/trending">🔥 Trending</a>
-        <a href="/cart">🛒 Cart</a>
-        <a href="/wishlist">❤️ Wishlist</a>
-        <a href="/logout">🚪 Logout</a>
-    </nav>
+<nav>
+
+<a href="/">🏠 Home</a>
+<a href="/categories">📂 Categories</a>
+<a href="/trending">🔥 Trending</a>
+<a href="/cart">🛒 Cart</a>
+<a href="/wishlist">❤️ Wishlist</a>
+<a href="/logout">🚪 Logout</a>
+
+</nav>
 
 </header>
 
-<section class="hero">
 
-    <h1>AI Powered Product Recommendation System</h1>
+<section class="ai-search-section">
 
-    <p>
-        Discover amazing products with AI-powered recommendations.
-    </p>
+<h1>🤖 SmartShop AI</h1>
 
-    <div class="search-box">
+<p>
+AI-powered personalized product discovery
+</p>
 
-        <input
-            id="searchBox"
-            type="text"
-            placeholder="Search Products...">
+<div class="ai-badge">
+⚡ Semantic AI + FAISS + RapidFuzz
+</div>
 
-        <button onclick="searchProduct()">
-            🔍 Search
-        </button>
+<div class="search-box">
 
-    </div>
+<input
+id="searchBox"
+type="text"
+placeholder="Try: cheap running shoes, laptop, matching shoes...">
+
+<button onclick="searchProduct()">
+🔍 Search
+</button>
+
+</div>
+
+<div id="intentBox" class="intent-box">
+🧠 AI is ready to understand your shopping intent.
+</div>
 
 </section>
 
 
+<h2 class="results-title" id="resultsTitle">
+⭐ Popular Products
+</h2>
 
-<div id="results" class="product-grid">
 
-
-
-<div id="results" class="product-grid">
+<div id="productsGrid" class="products-grid">
 
 {% for product in products %}
 
-<div class="card">
+<div class="product-card">
 
-    <img src="{{ url_for('static', filename='product_images/' + product.image) }}"
-         alt="{{ product.name }}">
+<img
+src="{{ url_for('static', filename='product_images/' + product.image) }}"
+alt="{{ product.name }}">
 
-    <h3>{{ product.name }}</h3>
+<div class="product-info">
 
-    <p><b>Category:</b> {{ product.category }}</p>
+<h3>{{ product.name }}</h3>
 
-    <p class="rating">
-        ⭐ {{ product.rating }}/5
-    </p>
+<p>
+<b>Category:</b> {{ product.category }}
+</p>
 
-    <p style="color:green;font-weight:bold;">
-        ✅ In Stock : {{ product.stock }}
-    </p>
+<p>
+⭐ {{ product.rating }}/5
+</p>
 
-    <h4 style="color:#0f62fe;">
-        ₹ {{ product.price }}
-    </h4>
+<p style="color:green;font-weight:bold;">
+✅ In Stock: {{ product.stock }}
+</p>
 
-    <div class="buttons">
+<h3 style="color:#0f62fe;">
+₹ {{ product.price }}
+</h3>
 
-        <a href="/product/{{ product.id }}">
-            <button class="view-btn">
-                👁 View Product
-            </button>
-        </a>
+{% if product.reason %}
 
-        <button class="wish-btn"
-                onclick="addWishlist('{{ product.name }}')">
-            ❤️ Wishlist
-        </button>
+<div class="reason">
+🤖 {{ product.reason }}
+</div>
 
-    </div>
+{% endif %}
+
+<div class="product-buttons">
+
+<a href="/product/{{ product.id }}">
+<button class="view-btn">
+👁 View Product
+</button>
+</a>
+
+<a href="/add_to_wishlist/{{ product.id }}">
+<button class="wish-btn">
+❤️ Wishlist
+</button>
+</a>
+
+</div>
+
+</div>
 
 </div>
 
 {% endfor %}
 
 </div>
-</header>
+
 
 <script>
 
-function addWishlist(name){
-    alert(name + " added to Wishlist ❤️");
-}
+async function searchProduct() {
 
-async function searchProduct(){
+    const query =
+        document.getElementById("searchBox")
+        .value
+        .trim();
 
-    const query=document.getElementById("searchBox").value;
+    const grid =
+        document.getElementById("productsGrid");
 
-    const response=await fetch("/search?q="+encodeURIComponent(query));
+    const title =
+        document.getElementById("resultsTitle");
 
-    const data=await response.json();
+    const intentBox =
+        document.getElementById("intentBox");
 
-    let html="";
 
-    if(data.length===0){
-        html="<h2 style='text-align:center'>No Products Found</h2>";
-    }else{
+    if (!query) {
 
-        data.forEach(product=>{
+        title.innerText = "⭐ Popular Products";
 
-            html+=`
-            <div class="card">
+        window.location.reload();
 
-                <img src="/static/product_images/${product.image}" alt="${product.name}">
+        return;
+    }
 
-                <h3>${product.name}</h3>
 
-                <p><b>Category:</b> ${product.category}</p>
+    intentBox.innerText =
+        "🧠 Understanding your shopping intent...";
 
-                <p class="rating">⭐ ${product.rating}/5</p>
 
-                <p style="color:green;font-weight:bold;">
-                    ✅ In Stock : ${product.stock}
-                </p>
+    try {
 
-                <h4 style="color:#0f62fe;">₹ ${product.price}</h4>
+        const response =
+            await fetch(
+                "/search?q=" +
+                encodeURIComponent(query)
+            );
 
-                <div class="buttons">
+        const results =
+            await response.json();
 
-                    <a href="/product/${product.id}">
-                        <button class="view-btn">👁 View Product</button>
-                    </a>
 
-                    <a href="/add_to_wishlist/${product.id}">
-                        <button class="wish-btn">❤️ Wishlist</button>
-                    </a>
+        const intentResponse =
+            await fetch(
+                "/intent?q=" +
+                encodeURIComponent(query)
+            );
+
+        const intentData =
+            await intentResponse.json();
+
+
+        intentBox.innerText =
+            "🎯 Detected intent: " +
+            intentData.intents.join(", ");
+
+
+        title.innerText =
+            "🤖 AI Results for: " + query;
+
+
+        grid.innerHTML = "";
+
+
+        if (results.length === 0) {
+
+            grid.innerHTML =
+                '<div class="empty-message">' +
+                'No matching products found.' +
+                '</div>';
+
+            return;
+        }
+
+
+        results.forEach(product => {
+
+            const reason =
+                product.reason
+                ? `<div class="reason">
+                    🤖 ${product.reason}
+                   </div>`
+                : "";
+
+
+            grid.innerHTML += `
+
+            <div class="product-card">
+
+                <img
+                    src="/static/product_images/${product.image}"
+                    alt="${product.name}">
+
+                <div class="product-info">
+
+                    <h3>${product.name}</h3>
+
+                    <p>
+                        <b>Category:</b>
+                        ${product.category}
+                    </p>
+
+                    <p>
+                        ⭐ ${product.rating}/5
+                    </p>
+
+                    <p style="color:green;font-weight:bold;">
+                        ✅ In Stock: ${product.stock}
+                    </p>
+
+                    <h3 style="color:#0f62fe;">
+                        ₹ ${product.price}
+                    </h3>
+
+                    ${reason}
+
+                    <div class="product-buttons">
+
+                        <a href="/product/${product.id}">
+                            <button class="view-btn">
+                                👁 View Product
+                            </button>
+                        </a>
+
+                        <a href="/add_to_wishlist/${product.id}">
+                            <button class="wish-btn">
+                                ❤️ Wishlist
+                            </button>
+                        </a>
+
+                    </div>
 
                 </div>
 
             </div>
             `;
+
         });
+
     }
 
-    document.getElementById("results").innerHTML=html;
+    catch (error) {
+
+        console.error(error);
+
+        intentBox.innerText =
+            "❌ Search failed. Please try again.";
+
+    }
+
 }
+
+
+document
+.getElementById("searchBox")
+.addEventListener(
+    "keypress",
+    function(event) {
+
+        if (event.key === "Enter") {
+            searchProduct();
+        }
+
+    }
+);
 
 </script>
 
